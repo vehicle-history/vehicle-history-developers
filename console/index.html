@@ -1,0 +1,147 @@
+---
+title: Interactive API Console
+---
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ page.title }}</title>
+  <link rel="icon" type="image/png" href="{{ site.baseurl }}/console/images/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="{{ site.baseurl }}/console/images/favicon-16x16.png" sizes="16x16" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link href="{{ site.baseurl }}/static/css/normalize.css" rel="stylesheet" type="text/css">
+  <link href='{{ site.baseurl }}/console/css/typography.css' media='screen' rel='stylesheet' type='text/css'/>
+  <link href="{{ site.baseurl }}/console/css/highlight.default.css" rel="stylesheet" type="text/css" media="screen"/>
+  <link href="{{ site.baseurl }}/console/css/screen.css" rel="stylesheet" type="text/css" media="screen" />
+  <link href="{{ site.baseurl }}/static/css/style.css" rel="stylesheet" type="text/css"/>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--[if IE]>
+  <link href="{{ site.baseurl }}/console/css/for-ie-only.css">
+  <![endif]-->
+
+  <!--[if lt IE 9]>
+  <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <script type="text/javascript" src="lib/shred.bundle.js" /></script>
+  <script src='lib/jquery-1.8.0.min.js' type='text/javascript'></script>
+  <script src='lib/jquery.slideto.min.js' type='text/javascript'></script>
+  <script src='lib/jquery.wiggle.min.js' type='text/javascript'></script>
+  <script src='lib/jquery.ba-bbq.min.js' type='text/javascript'></script>
+  <script src='lib/handlebars-2.0.0.js' type='text/javascript'></script>
+  <script src='lib/underscore-min.js' type='text/javascript'></script>
+  <script src='lib/backbone-min.js' type='text/javascript'></script>
+  <script src='lib/swagger.js' type='text/javascript'></script>
+  <script src='swagger-ui.js' type='text/javascript'></script>
+  <script src='lib/highlight.7.3.pack.js' type='text/javascript'></script>
+  <script src='lib/marked.js' type='text/javascript'></script>
+
+  <script type="text/javascript">
+      $(function () {
+          var url = window.location.search.match(/url=([^&]+)/);
+          if (url && url.length > 1) {
+              url = decodeURIComponent(url[1]);
+          } else {
+              url = "{{ site.baseurl }}/api-docs/swagger.json";
+          }
+          window.swaggerUi = new SwaggerUi({
+              url: url,
+              dom_id: "swagger-ui-container",
+              supportedSubmitMethods: ['get'],
+              onComplete: function (swaggerApi, swaggerUi) {
+                  if (typeof initOAuth == "function") {
+                      /*
+                       initOAuth({
+                       clientId: "your-client-id",
+                       realm: "your-realms",
+                       appName: "your-app-name"
+                       });
+                       */
+                  }
+                  $('pre code').each(function (i, e) {
+                      hljs.highlightBlock(e)
+                  });
+
+                addApiKeyAuthorization();
+              },
+              onFailure: function (data) {
+                  log("Unable to Load SwaggerUI");
+              },
+              docExpansion: "none",
+              sorter: "alpha"
+          });
+
+          function addApiKeyAuthorization() {
+              var key = encodeURIComponent($('#input_apiKey')[0].value);
+
+              if (key && key.trim() != "") {
+                  var apiKeyAuth = new SwaggerClient.ApiKeyAuthorization("Authorization", "Bearer " + key, "header");
+                  window.swaggerUi.api.clientAuthorizations.add("api_key", apiKeyAuth);
+                  log("added key " + key);
+              }
+          }
+
+          $('#input_apiKey').change(addApiKeyAuthorization);
+
+          // if you have an apiKey you would like to pre-populate on the page for demonstration purposes...
+          /*
+           var apiKey = "myApiKeyXXXX123456789";
+           $('#input_apiKey').val(apiKey);
+           addApiKeyAuthorization();
+           */
+
+          window.swaggerUi.load();
+
+          function log() {
+              if ('console' in window) {
+                  console.log.apply(console, arguments);
+              }
+          }
+      });
+  </script>
+</head>
+
+<body id="console">
+  <header class="header cf" role="banner">
+      {% include header.html %}
+  </header>
+
+<div class="wrap">
+    <div class="content">
+
+    <aside>
+    {% include nav.html %}
+    </aside>
+
+    <section class="main-content" role="main">
+
+      <h3 id='api_calls'>{{ page.title }}</h3>
+
+        <form id='api_selector'>
+            <div class='input'><input placeholder="Bearer token..." id="input_apiKey" name="apiKey" type="text"/></div>
+            <div class='input'><a id="explore" href="#">Update token</a></div>
+        </form>
+
+<p>Explore the API. Read <a href="../basics.html">API basics</a> first to learn about ~~authorization.~~
+
+      <div id="message-bar" class="swagger-ui-wrap">&nbsp;</div>
+      <div class="swagger-section">
+        <div id="swagger-ui-container" class="swagger-ui-wrap"></div>
+      </div>
+
+
+    </section>
+
+    </div>
+  </div> <!--wrap-->
+
+    <footer class="footer cf" role="contentinfo">
+      <div class="wrap">
+        {% include footer.html %}
+      </div>
+    </footer>
+  <script src="{{ site.baseurl }}/static/js/docs.min.js"></script>
+  <script type="text/javascript" src="{{ site.baseurl }}/static/js/expandables.js"></script>
+</body>
+</html>

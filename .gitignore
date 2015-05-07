@@ -1,0 +1,7 @@
+*.ipr
+*.iml
+*.ims
+_site
+_components
+node_modules
+

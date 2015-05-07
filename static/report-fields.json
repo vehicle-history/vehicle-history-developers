@@ -1,0 +1,12 @@
+{
+  "fields": {
+    "vehicle": {
+      "description": "The detailed description of a vehicle.",
+      "type": "object"
+    },
+    "events": {
+      "description": "The vehicle events.",
+      "type": "array"
+    }
+  }
+}

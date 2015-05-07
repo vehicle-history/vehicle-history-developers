@@ -1,0 +1,87 @@
+{
+  "fields": {
+
+    "type": {
+      "description": "Vehicle event type",
+      "could_be": "REGISTRATION",
+      "url": "enums.html",
+      "type": "string"
+    },
+
+    "createdAt": {
+      "description": "Vehicle event createdAt",
+      "could_be": "1999-04-17T00:00:00.000Z",
+      "type": "date-time"
+    },
+
+    "description": {
+      "description": "Vehicle event description",
+      "type": "string"
+    },
+
+    "note": {
+      "description": "Vehicle event note",
+      "type": "string"
+    },
+
+    "firstOwner": {
+      "description": "Vehicle event firstOwner",
+      "could_be": "true",
+      "type": "boolean"
+    },
+
+    "ownerType": {
+      "description": "Vehicle event ownerType",
+      "could_be": "PRIVATE",
+      "url": "enums.html",
+      "type": "string"
+    },
+
+    "location": {
+      "description": "Vehicle event location",
+      "type": "object"
+    },
+
+    "location.state": {
+      "description": "Vehicle event location state",
+      "could_be": "wielkopolska",
+      "type": "string"
+    },
+
+    "location.country": {
+      "description": "Vehicle event location country",
+      "could_be": "PL",
+      "type": "string"
+    },
+
+    "expireAt": {
+      "description": "Vehicle event expireAt",
+      "could_be": "1999-04-17T00:00:00.000Z",
+      "type": "date-time"
+    },
+
+    "abroadRegistration": {
+      "description": "Vehicle event abroadRegistration",
+      "could_be": "true",
+      "type": "boolean"
+    },
+
+    "mileage": {
+      "description": "Vehicle mileage",
+      "type": "object"
+    },
+
+    "mileage.value": {
+      "description": "Vehicle mileage value",
+      "could_be": "12345",
+      "type": "integer"
+    },
+
+    "mileage.type": {
+      "description": "Vehicle mileage type",
+      "could_be": "KM",
+      "url": "enums.html",
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+.git
+_components
+_data
+_includes
+_layouts
+_posts
+api-docs
+blog
+console
+node_modules
+static

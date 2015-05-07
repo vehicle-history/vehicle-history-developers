@@ -1,0 +1,167 @@
+{
+  "fields": {
+    "name": {
+      "description": "Vehicle name",
+      "type": "object"
+    },
+
+    "name.make": {
+      "description": "Vehicle make name",
+      "could_be": "FSO",
+      "url": "enums.html",
+      "type": "string"
+    },
+
+    "name.name": {
+      "description": "Vehicle secondary name",
+      "could_be": "polonez",
+      "type": "string"
+    },
+
+    "name.model": {
+      "description": "Vehicle model name",
+      "could_be": "caro 1.6",
+      "type": "string"
+    },
+
+    "type": {
+      "description": "Vehicle type",
+      "url": "enums.html",
+      "type": "object"
+    },
+
+    "type.type": {
+      "description": "Vehicle type",
+      "could_be": "CAR",
+      "url": "enums.html",
+      "type": "string"
+    },
+
+    "type.kind": {
+      "description": "Vehicle kind",
+      "could_be": "HATCHBACK",
+      "url": "enums.html",
+      "type": "string"
+    },
+
+    "engine": {
+      "description": "Vehicle engine",
+      "type": "object"
+    },
+
+    "engine.cubicCapacity": {
+      "description": "Vehicle engine cubicCapacity",
+      "could_be": "1598",
+      "type": "integer"
+    },
+
+    "engine.fuel": {
+      "description": "Vehicle engine fuel",
+      "could_be": "PETROL",
+      "url": "enums.html",
+      "type": "string"
+    },
+
+    "production": {
+      "description": "Vehicle production",
+      "type": "object"
+    },
+
+    "production.year": {
+      "description": "Vehicle production year",
+      "could_be": "1598",
+      "type": "integer"
+    },
+
+    "policy": {
+      "description": "Vehicle policy",
+      "type": "object"
+    },
+
+    "policy.status": {
+      "description": "Vehicle policy status",
+      "could_be": "UNKNOWN",
+      "url": "enums.html",
+      "type": "string"
+    },
+
+    "registration": {
+      "description": "Vehicle registration",
+      "type": "object"
+    },
+
+    "registration.status": {
+      "description": "Vehicle registration status",
+      "could_be": "UNKNOWN",
+      "url": "enums.html",
+      "type": "string"
+    },
+
+    "registration.firstAt": {
+      "description": "Vehicle registration firstAt",
+      "could_be": "1999-04-17T00:00:00.000Z",
+      "type": "date-time"
+    },
+
+    "inspection": {
+      "description": "Vehicle inspection",
+      "type": "object"
+    },
+
+    "inspection.status": {
+      "description": "Vehicle inspection status",
+      "could_be": "UNKNOWN",
+      "url": "enums.html",
+      "type": "string"
+    },
+
+    "mileage": {
+      "description": "Vehicle mileage",
+      "type": "object"
+    },
+
+    "mileage.value": {
+      "description": "Vehicle mileage value",
+      "could_be": "12345",
+      "type": "integer"
+    },
+
+    "mileage.type": {
+      "description": "Vehicle mileage type",
+      "could_be": "KM",
+      "url": "enums.html",
+      "type": "string"
+    },
+
+    "stolen": {
+      "description": "Vehicle stolen status",
+      "could_be": "true",
+      "type": "bool"
+    },
+
+    "plate": {
+      "description": "Vehicle plate",
+      "type": "object"
+    },
+
+    "plate.value": {
+      "description": "Vehicle plate value",
+      "could_be": "BBC1234",
+      "type": "string"
+    },
+
+    "plate.country": {
+      "description": "Vehicle plate country",
+      "could_be": "PL",
+      "url": "enums.html",
+      "type": "string"
+    },
+
+    "vin": {
+      "description": "Vehicle vin number",
+      "could_be": "ABC123456789DEF",
+      "type": "string"
+    }
+
+  }
+}
