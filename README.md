@@ -13,3 +13,5 @@ After changing the JavaScript, run `grunt` to rebuild the minified JS.
 ```
 bundle exec jekyll serve
 ```
+
+[![Analytics](https://ga-beacon.appspot.com/UA-73556414-1/vehicle-history-developers/readme?pixel)](https://github.com/vehicle-history/vehicle-history-developers)
